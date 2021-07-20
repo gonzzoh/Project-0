@@ -3,7 +3,9 @@
 const startEl = document.getElementById('btn-start');
 const feedEl = document.getElementById('btn-feed');
 const advEl = document.getElementById('btn-adventure');
-const sleepEl = document.getElementById('btn-night')
+const sleepEl = document.getElementById('btn-night');
+const timerEl = document.getElementById('timer')
+
 let interval = null;
 
 
@@ -32,12 +34,12 @@ let rest = 10
 function handleStartClick(){
     interval = setInterval(function (){
         timer++
-        // countEl.textContent = "Count: " + count;
+        timerEl.textContent = "Day #" + timer;
         console.log(timer)
-    }, 1000);
+    }, 2400);
 }
 
-//
+
 
 
 
