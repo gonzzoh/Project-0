@@ -1,0 +1,55 @@
+/* .cube-wrapper { 
+    width: 800px;
+    height: 400px;
+    top: 45%;
+    left: 50%;
+    position: absolute;
+    box-shadow: 10px 10px 54px -6px rgba(0,0,0,0.75);
+    transform: translate(-50%, -50%);
+}
+.cube,.cube div {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    transform-style: preserve-3d;
+    transition: 0.5s ease-in-out;
+}
+.cube-left {
+    text-align:center;
+    background: url("logo_youtube.png") red no-repeat center;
+    background-size: 100%;
+}
+.cube-front {
+    text-align: center;
+    background: url("logo_large.png") purple no-repeat center;
+    background-size: 100%;
+    transform: translate(0, -100%) rotateX(90deg);
+    transform-origin: bottom;
+}
+.cube-wrapper:hover .cube {
+    transform: translate(0, 50%) rotateX(-90deg); */
+/* } */
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+#battery {
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: space-between;
+    width: 80%;
+    height: 40vh;
+    background-color: gray;
+}
+
+    
+.cube-wrapper {
+
+}
