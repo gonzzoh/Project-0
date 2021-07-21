@@ -1,5 +1,6 @@
 //DOM references//
 
+// const btnsEl = document.getElementById('maintenance')
 const startEl = document.getElementById('btn-start');
 const feedEl = document.getElementById('btn-feed');
 const advEl = document.getElementById('btn-adventure');
@@ -61,6 +62,15 @@ function handleStartClick(){
     myPet.name = answer
     namePlate.textContent = myPet.name
     console.log(answer);
+    if (answer.length > 0){
+    advEl.removeAttribute('disabled')
+    feedEl.removeAttribute('disabled')
+    sleepEl.removeAttribute('disabled')
+    } else {
+        advEl.setAttribute('disabled', 'disabled');
+        feedEl.setAttribute('disabled', 'disabled');
+        sleepEl.setAttribute('disabled', 'disabled');
+    }
     interval = setInterval(function (){
         count++
         if (count % 6 === 0) {
@@ -85,41 +95,71 @@ function handleStartClick(){
 }  
 
 function gameOver(){
-    buttonElement.style.display = NaN
+    advEl.setAttribute('disabled', 'disabled');
+    feedEl.setAttribute('disabled', 'disabled');
+    sleepEl.setAttribute('disabled', 'disabled');
+    clearInterval(interval)
+
 }
 
-function handleAdvClick() {
-    myPet.fun = myPet.fun + 15;
+let recklessCount = 0;
+function handleAdvClick(){
+    if (myPet.fun >= 100){
+        recklessCount++
+        if (recklessCount > 2){
+            rulesLine.textContent = `${myPetname} got too reckless!! (GAME OVER)`;
+            return gameOver();
+        } else {
+            rulesLine.textContent = `The more adventures ${myPet.name} goes on, the less careful he is!`
+        }
+    } else {
+
+        myPet.fun = myPet.fun + 15;
+        rulesLine.textContent = `Rick and ${myPet.name} went adventuring!`   
+    }
+
     funEl.textContent = `Entertainment Levels: ${myPet.fun}`;
+    console.log(myPet.fun)
     
 }
 
 let overFeedCount = 0;
 function handleFeedClick() {
-    if (myPet.sustenance >= 100) {
+    if (myPet.sustenance >= 100){
         overFeedCount++
-        if (overFeedCount > 3) {
-            rulesLine.textContent = 'MORTY EXPLODED (GAME OVER)'
+        if (overFeedCount > 3){
+            rulesLine.textContent = `${myPet.name} exploded!! (GAME OVER)`;
             // if the game ends:
             // stop timers 
-            return  gameOver()
+            return  gameOver();
             // disable buttons
         } else {
-            rulesLine.textContent = 'If you feed him too much he will explode!'
+            rulesLine.textContent = `If you feed ${myPet.name} too much he will explode!`
         }
     } else {
         myPet.sustenance = myPet.sustenance + 5;
-        rulesLine.textContent = 'Morty be grubbin'
+        rulesLine.textContent = `${myPet.name} be grubbin`
     }
     sustenanceEl.textContent = `Sustenance Levels: ${myPet.sustenance}`;
     console.log(myPet.sustenance)
 }
 
-
-function handleSleepClick() {
-    myPet.rest = 100;
+let overSleepCount = 0;
+function handleSleepClick(){
+    if (myPet.rest >= 100){
+            overSleepCount++
+            if (overSleepCount > 1) {
+            rulesLine.textContent = `Scary Terry quenched his bloodlust with ${myPet.name}'s life!! (GAME OVER)`
+            return gameOver();
+        } else {
+            rulesLine.textContent = `If ${myPet.name} sleeps too much, Scary Terry will appear in his dreams!`
+        } 
+    } else {
+        myPet.rest = 100;
+        rulesLine.textContent = `${myPet.name} is sleeping like a baby`
+    }
     restEl.textContent = `Rest Levels: ${myPet.rest}`;
-
+    console.log(myPet.rest)
 }
 
 ////////////////////////////////////////////////////////////////////////?
@@ -145,8 +185,5 @@ sleepEl.addEventListener('click', handleSleepClick);
 ////////////////////////////////////////////////////////////////////////
 
 // CLASS MORTY//
-
-
-
 
 
