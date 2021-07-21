@@ -89,6 +89,7 @@ function handleStartClick(){
             restEl.textContent = `Rest Levels: ${myPet.rest}`;
 
         }
+        console.log("Day: " + count)
         countEl.textContent = "Day #" + count;
     }, 2400);
 
@@ -106,11 +107,11 @@ let recklessCount = 0;
 function handleAdvClick(){
     if (myPet.fun >= 100){
         recklessCount++
-        if (recklessCount > 2){
-            rulesLine.textContent = `${myPetname} got too reckless!! (GAME OVER)`;
+        if (recklessCount > 3){
+            rulesLine.textContent = `${myPet.name} got too reckless!! (GAME OVER)`;
             return gameOver();
         } else {
-            rulesLine.textContent = `The more adventures ${myPet.name} goes on, the less careful he is!`
+            rulesLine.textContent = `${myPet.name} is getting cocky in his adventures! He needs to stop for a bit`
         }
     } else {
 
@@ -119,7 +120,7 @@ function handleAdvClick(){
     }
 
     funEl.textContent = `Entertainment Levels: ${myPet.fun}`;
-    console.log(myPet.fun)
+    // console.log(myPet.fun)
     
 }
 
@@ -141,7 +142,7 @@ function handleFeedClick() {
         rulesLine.textContent = `${myPet.name} be grubbin`
     }
     sustenanceEl.textContent = `Sustenance Levels: ${myPet.sustenance}`;
-    console.log(myPet.sustenance)
+    // console.log(myPet.sustenance)
 }
 
 let overSleepCount = 0;
@@ -159,7 +160,7 @@ function handleSleepClick(){
         rulesLine.textContent = `${myPet.name} is sleeping like a baby`
     }
     restEl.textContent = `Rest Levels: ${myPet.rest}`;
-    console.log(myPet.rest)
+    // console.log(myPet.rest)
 }
 
 ////////////////////////////////////////////////////////////////////////?
