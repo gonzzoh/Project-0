@@ -1,3 +1,8 @@
+h1 {
+    background-color: rgb(175, 238, 238);
+    color: black;
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -7,116 +12,19 @@ body {
     background-repeat: no-repeat;
 }
 
-/* .cube-wrapper { 
-    width: 800px;
-    height: 400px;
-    top: 45%;
-    left: 50%;
-    position: absolute;
-    box-shadow: 10px 10px 54px -6px rgba(0,0,0,0.75);
-    transform: translate(-50%, -50%);
-}
-.cube,.cube div {
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    position: absolute;
-    transform-style: preserve-3d;
-    transition: 0.5s ease-in-out;
-}
-.cube-left {
-    text-align:center;
-    background: url("logo_youtube.png") red no-repeat center;
-    background-size: 100%;
-}
-.cube-front {
-    text-align: center;
-    background: url("logo_large.png") purple no-repeat center;
-    background-size: 100%;
-    transform: translate(0, -100%) rotateX(90deg);
-    transform-origin: bottom;
-}
-.cube-wrapper:hover .cube {
-    transform: translate(0, 50%) rotateX(-90deg); */
-/* } */
-
-h1 {
-    background-color: rgb(175, 238, 238);
-    color: black;
+#btn-start{
+    background-color:black;
+    color: greenyellow;
+    border: 3px solid #3F3F3F;
 }
 
-#timer{
-    background-color: darkcyan
-}
-
-#battery {
-    display: flex;
-    flex-direction: column;
-    align-items:center;
-    justify-content: space-between;
-    width: 80%;
-    height: 40vh;
-    background-color: gray;
-}
-
-    
-/* .cube-wrapper {
-
-} */
-
-#stats {
-    display: flex;
-    justify-content: space-between;
-    background-color: gray;
-    border: 4px solid darkslategrey;
-}
-
-.stats{
-    margin: 2vw;
-
-}
-
-#morty{
-
+#Morty{
+    align-items: center;
+    margin: 50px;
 }
 
 #mortyName{
-    text-align: center;
     background-color: rgb(220, 220, 220, 0.7);
-}
-
-.button{
-    display: inline-block;
-    width: 50px;
-    height: 50px;
-    border: 1px solid black;
-}
-
-#maintenance{
-    display: flex;
-    flex-direction: row;
-    flex-flow: space-between;
-    flex-grow: 4;
-    margin-top: 20px;
-    color: cyan;
-}
-
-#btn-feed{
-    background-image: url(images/feed_button.jpg);
-    background-size: cover;
-    text-align: center;
-}
-
-#btn-adventure{
-    background-image: url(images/adventure_button.png);
-    background-size: cover;
-    text-align: center;
-}
-
-#btn-night{
-    background-image: url(images/sleep_button.gif);
-    background-size: cover;
     text-align: center;
 }
 
@@ -127,4 +35,81 @@ h1 {
     display: flex;
     background-size: cover;
     
+}
+
+#hub{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    background-image: url(images/hub_background.jpg);
+    background-size: cover;
+    background-position: -16px -21px;
+    border: 7px solid #3F3F3F;
+    align-items: center;
+}
+
+
+
+#timer{
+    color: greenyellow;
+    background-color: black;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#rules{
+    color: greenyellow;
+    background-color: black;
+    text-align: center;
+    visibility: hidden;
+    }
+
+#maintenance{
+width: 100%;
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+max-height: 52px;
+flex-grow: 4;
+margin-top: 20px;
+}
+
+#stats {
+    display: flex;
+    justify-content: space-between;
+    background-color: gray;
+    border: 1px solid darkslategrey;
+}
+
+.stats{
+    margin: 2vw;
+
+}
+
+
+.button{
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border: 1px solid black;
+}
+
+
+#btn-feed{
+    background-image: url(images/feed_button.jpg);
+    background-size: cover;
+    text-align: center;
+}
+
+#btn-adventure{
+    background-image: url(images/adventure-button.png);
+    background-size: cover;
+    text-align: center;
+}
+
+#btn-night{
+    background-image: url(images/sleep_button.gif);
+    background-size: cover;
+    text-align: center;
 }

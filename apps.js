@@ -109,14 +109,18 @@ function handleAdvClick(){
         recklessCount++
         if (recklessCount > 3){
             rulesLine.textContent = `${myPet.name} got too reckless!! (GAME OVER)`;
+            rulesLine.style.visibility = 'visible'
             return gameOver();
         } else {
             rulesLine.textContent = `${myPet.name} is getting cocky in his adventures! He needs to stop for a bit`
+            rulesLine.style.visibility = 'visible'
+
         }
     } else {
 
         myPet.fun = myPet.fun + 15;
         rulesLine.textContent = `Rick and ${myPet.name} went adventuring!`   
+        rulesLine.style.visibility = 'visible'
     }
 
     funEl.textContent = `Entertainment Levels: ${myPet.fun}`;
@@ -130,18 +134,25 @@ function handleFeedClick() {
         overFeedCount++
         if (overFeedCount > 3){
             rulesLine.textContent = `${myPet.name} exploded!! (GAME OVER)`;
+            rulesLine.style.visibility = 'visible'
+
             // if the game ends:
             // stop timers 
             return  gameOver();
             // disable buttons
         } else {
             rulesLine.textContent = `If you feed ${myPet.name} too much he will explode!`
+            rulesLine.style.visibility = 'visible'
         }
     } else {
         myPet.sustenance = myPet.sustenance + 5;
         rulesLine.textContent = `${myPet.name} be grubbin`
+        rulesLine.style.visibility = 'visible'
+
     }
     sustenanceEl.textContent = `Sustenance Levels: ${myPet.sustenance}`;
+    rulesLine.style.visibility = 'visible'
+
     // console.log(myPet.sustenance)
 }
 
@@ -151,15 +162,19 @@ function handleSleepClick(){
             overSleepCount++
             if (overSleepCount > 1) {
             rulesLine.textContent = `Scary Terry quenched his bloodlust with ${myPet.name}'s life!! (GAME OVER)`
+            rulesLine.style.visibility = 'visible'
             return gameOver();
         } else {
             rulesLine.textContent = `If ${myPet.name} sleeps too much, Scary Terry will appear in his dreams!`
+            rulesLine.style.visibility = 'visible'
         } 
     } else {
         myPet.rest = 100;
         rulesLine.textContent = `${myPet.name} is sleeping like a baby`
+        rulesLine.style.visibility = 'visible'
     }
     restEl.textContent = `Rest Levels: ${myPet.rest}`;
+    rulesLine.style.visibility = 'visible'
     // console.log(myPet.rest)
 }
 
