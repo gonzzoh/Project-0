@@ -8,7 +8,7 @@ body {
     flex-direction: column;
     align-items: center;
     background-image: url(images/background_frfr.png);
-    background-size: 1440px 790px;
+    background-size: cover;
     background-repeat: no-repeat;
 }
 
@@ -46,6 +46,8 @@ body {
     background-position: -16px -21px;
     border: 7px solid #3F3F3F;
     align-items: center;
+    width: 80%;
+    min-height: 200px;
 }
 
 
@@ -65,9 +67,13 @@ body {
     visibility: hidden;
     }
 
+#maintenance:hover {
+
+}
+
 #maintenance{
 width: 100%;
-display: flex;
+display: none;
 flex-direction: row;
 justify-content: space-around;
 max-height: 52px;
@@ -80,11 +86,12 @@ margin-top: 20px;
     justify-content: space-between;
     background-color: gray;
     border: 1px solid darkslategrey;
+    width: 100%;
+    bottom: 0;
 }
 
 .stats{
     margin: 2vw;
-
 }
 
 
@@ -100,16 +107,19 @@ margin-top: 20px;
     background-image: url(images/feed_button.jpg);
     background-size: cover;
     text-align: center;
+    display: none;
 }
 
 #btn-adventure{
     background-image: url(images/adventure-button.png);
     background-size: cover;
     text-align: center;
+    display:none;
 }
 
 #btn-night{
     background-image: url(images/sleep_button.gif);
     background-size: cover;
     text-align: center;
+    display:none;
 }

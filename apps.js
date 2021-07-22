@@ -1,6 +1,9 @@
 //DOM references//
+const foodEl = document.querySelector('#btn-feed');
+const advenEl = document.querySelector('#btn-adventure');
+const sleptEl = document.querySelector('#btn-night');
+const btnsEl = document.querySelector('#maintenance')
 
-// const btnsEl = document.getElementById('maintenance')
 const startEl = document.getElementById('btn-start');
 const feedEl = document.getElementById('btn-feed');
 const advEl = document.getElementById('btn-adventure');
@@ -11,6 +14,7 @@ const sustenanceEl = document.getElementById('hunger');
 const restEl = document.getElementById('rest');
 const namePlate = document.getElementById('mortyName')
 const rulesLine = document.getElementById('rules')
+var buttons = document.querySelector("#maintenance")
 
 let interval = null;
 
@@ -63,13 +67,12 @@ function handleStartClick(){
     namePlate.textContent = myPet.name
     console.log(answer);
     if (answer.length > 0){
-    advEl.removeAttribute('disabled')
-    feedEl.removeAttribute('disabled')
-    sleepEl.removeAttribute('disabled')
-    } else {
-        advEl.setAttribute('disabled', 'disabled');
-        feedEl.setAttribute('disabled', 'disabled');
-        sleepEl.setAttribute('disabled', 'disabled');
+    advenEl.style.display = ('flex');
+    foodEl.style.display = ('flex');
+    sleptEl.style.display = ('flex');
+    btnsEl.style.display = ('flex')
+} else {
+        btnsEl.style.display = ('none')
     }
     interval = setInterval(function (){
         count++
@@ -96,9 +99,7 @@ function handleStartClick(){
 }  
 
 function gameOver(){
-    advEl.setAttribute('disabled', 'disabled');
-    feedEl.setAttribute('disabled', 'disabled');
-    sleepEl.setAttribute('disabled', 'disabled');
+    btnsEl.style.display = ('none')
     clearInterval(interval)
 
 }
