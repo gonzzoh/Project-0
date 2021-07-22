@@ -1,3 +1,12 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url(images/background_frfr.png);
+    background-size: 1440px 790px;
+    background-repeat: no-repeat;
+}
+
 /* .cube-wrapper { 
     width: 800px;
     height: 400px;
@@ -32,11 +41,13 @@
     transform: translate(0, 50%) rotateX(-90deg); */
 /* } */
 
-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+h1 {
+    background-color: rgb(175, 238, 238);
+    color: black;
+}
 
+#timer{
+    background-color: darkcyan
 }
 
 #battery {
@@ -57,11 +68,56 @@ body {
 #stats {
     display: flex;
     justify-content: space-between;
+    background-color: gray;
+    border: 4px solid darkslategrey;
 }
 
 .stats{
     margin: 2vw;
 
+}
+
+#morty{
+
+}
+
+#mortyName{
+    text-align: center;
+    background-color: rgb(220, 220, 220, 0.7);
+}
+
+.button{
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border: 1px solid black;
+}
+
+#maintenance{
+    display: flex;
+    flex-direction: row;
+    flex-flow: space-between;
+    flex-grow: 4;
+    margin-top: 20px;
+    color: cyan;
+}
+
+#btn-feed{
+    background-image: url(images/feed_button.jpg);
+    background-size: cover;
+    text-align: center;
+}
+
+#btn-adventure{
+    background-image: url(images/adventure_button.png);
+    background-size: cover;
+    text-align: center;
+}
+
+#btn-night{
+    background-image: url(images/sleep_button.gif);
+    background-size: cover;
+    text-align: center;
 }
 
 #mortyBody{
