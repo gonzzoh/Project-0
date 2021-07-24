@@ -10,13 +10,17 @@ const advEl = document.getElementById('btn-adventure');
 const sleepEl = document.getElementById('btn-night');
 const countEl = document.getElementById('timer');
 const funEl = document.getElementById('fun');
-const sustenanceEl = document.getElementById('hunger');
+const sustenanceEl = document.getElementById('sustenance');
 const restEl = document.getElementById('rest');
 const namePlate = document.getElementById('mortyName')
 const rulesLine = document.getElementById('rules')
 var buttons = document.querySelector("#maintenance")
 
 let interval = null;
+let count = null;
+let recklessCount = null;
+let overFeedCount = null;
+let overSleepCount = null;
 
 
 //////////////////////////////////////////////////////////////////////
@@ -37,7 +41,6 @@ let interval = null;
 
 
 // variable for depletion
-let count = 0;
 
 //////////////////////////////////////////////////////////////////////
 
@@ -48,9 +51,6 @@ class Pet {
         this.sustenance = 100;
         this.fun = 100;
         this.rest = 100;
-    }
-    handleAdvClick(){
-
     }
 }
 
@@ -63,17 +63,32 @@ const myPet = new Pet();
 //timer funtions
 function handleStartClick(){
     let answer = prompt('What is your morty\'s name?', 'Morty')
+    if (answer.length > 0){
+        advenEl.style.visibility = ('visible');
+        foodEl.style.visibility = ('visible');
+        sleptEl.style.visibility = ('visible');
+        rulesLine.textContent = 'This is where the rules appear'
+        rulesLine.style.visibility = ('hidden');
+    } 
+    clearInterval(interval)
+    clearInterval(recklessCount)
+    clearInterval(overFeedCount)
+    clearInterval(overSleepCount)
+
+    countEl.textContent = 'Lifespan';
     myPet.name = answer
     namePlate.textContent = myPet.name
     console.log(answer);
-    if (answer.length > 0){
-    advenEl.style.display = ('flex');
-    foodEl.style.display = ('flex');
-    sleptEl.style.display = ('flex');
-    btnsEl.style.display = ('flex')
-} else {
-        btnsEl.style.display = ('none')
+        if (myPet.fun <= 100 && myPet.sustenance <= 100 && myPet.rest <= 100){
+            myPet.rest = 100;
+            myPet.sustenance = 100;
+            myPet.fun = 100;
+            count = null;
+            funEl.textContent = `Entertainment Levels: ${myPet.fun}`;
+            sustenanceEl.textContent = `Sustenance Levels: ${myPet.sustenance}`;
+            restEl.textContent = `Rest Levels: ${myPet.rest}`;
     }
+ 
     interval = setInterval(function (){
         count++
         if (count % 6 === 0) {
@@ -92,19 +107,34 @@ function handleStartClick(){
             restEl.textContent = `Rest Levels: ${myPet.rest}`;
 
         }
+        if (myPet.sustenance <=0){
+            rulesLine.textContent = `You starved ${myPet.name} to death.`
+            gameOver()
+        } else if (myPet.fun <=0){
+            rulesLine.textContent = `You bored ${myPet.name} to death.`
+            gameOver()
+        } else if (myPet.rest <=0){
+            rulesLine.textContent = `You worked ${myPet.name} to death.`
+            gameOver()
+        }
         console.log("Day: " + count)
-        countEl.textContent = "Day #" + count;
+        countEl.textContent = "Day # " + count;
     }, 2400);
 
 }  
 
 function gameOver(){
-    btnsEl.style.display = ('none')
+    advenEl.style.visibility = ('hidden');
+    foodEl.style.visibility = ('hidden');
+    sleptEl.style.visibility = ('hidden');
+    btnsEl.style.visibility = ('hidden');
+    rulesLine.style.visibility = ('visible');
     clearInterval(interval)
-
+    clearInterval(recklessCount)
+    clearInterval(overFeedCount)
+    clearInterval(overSleepCount)
 }
 
-let recklessCount = 0;
 function handleAdvClick(){
     if (myPet.fun >= 100){
         recklessCount++
@@ -129,7 +159,6 @@ function handleAdvClick(){
     
 }
 
-let overFeedCount = 0;
 function handleFeedClick() {
     if (myPet.sustenance >= 100){
         overFeedCount++
@@ -157,7 +186,6 @@ function handleFeedClick() {
     // console.log(myPet.sustenance)
 }
 
-let overSleepCount = 0;
 function handleSleepClick(){
     if (myPet.rest >= 100){
             overSleepCount++
