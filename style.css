@@ -62,26 +62,6 @@ body {
 
 }
 
-
-#Morty{
-    align-items: center;
-    margin: 50px;
-}
-
-#mortyName{
-    background-color: rgb(220, 220, 220, 0.7);
-    text-align: center;
-}
-
-#mortyBody{
-    background-image: url(images/morty-derp-face.png);
-    width: 300px;
-    height: 300px;
-    display: flex;
-    background-size: cover;
-    
-}
-
 #hub{
     display: flex;
     flex-direction: column;

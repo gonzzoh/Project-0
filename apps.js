@@ -77,7 +77,7 @@ function handleStartClick(){
 
     countEl.textContent = 'Lifespan';
     myPet.name = answer
-    namePlate.textContent = `Morty ID: ${myPet.name}`
+    namePlate.textContent = `Battery ID: ${myPet.name}`
     console.log(answer);
         if (myPet.fun <= 100 && myPet.sustenance <= 100 && myPet.rest <= 100){
             myPet.rest = 100;
@@ -108,13 +108,13 @@ function handleStartClick(){
 
         }
         if (myPet.sustenance <=0){
-            rulesLine.textContent = `You starved ${myPet.name} to death.`
+            rulesLine.textContent = `You starved ${myPet.name} to death. (GAME OVER)`
             gameOver()
         } else if (myPet.fun <=0){
-            rulesLine.textContent = `You bored ${myPet.name} to death.`
+            rulesLine.textContent = `You bored ${myPet.name} to death. (GAME OVER)`
             gameOver()
         } else if (myPet.rest <=0){
-            rulesLine.textContent = `You worked ${myPet.name} to death.`
+            rulesLine.textContent = `You worked ${myPet.name} to death. (GAME OVER)`
             gameOver()
         }
         console.log("Day: " + count)
