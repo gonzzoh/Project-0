@@ -69,15 +69,15 @@ function handleStartClick(){
         sleptEl.style.visibility = ('visible');
         rulesLine.textContent = 'This is where the rules appear'
         rulesLine.style.visibility = ('hidden');
+        clearInterval(interval);
+        clearInterval(recklessCount);
+        clearInterval(overFeedCount);
+        clearInterval(overSleepCount);
     } 
-    clearInterval(interval)
-    clearInterval(recklessCount)
-    clearInterval(overFeedCount)
-    clearInterval(overSleepCount)
 
     countEl.textContent = 'Lifespan';
     myPet.name = answer
-    namePlate.textContent = myPet.name
+    namePlate.textContent = `Morty ID: ${myPet.name}`
     console.log(answer);
         if (myPet.fun <= 100 && myPet.sustenance <= 100 && myPet.rest <= 100){
             myPet.rest = 100;

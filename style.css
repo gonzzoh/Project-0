@@ -58,7 +58,8 @@ body {
     transform-origin: left;
 }
 .rectangle-wrapper:hover .rectangle {
-    transform: rotateY(-90deg);
+    transform: rotateY(-90deg)
+
 }
 
 
