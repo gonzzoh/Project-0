@@ -3,7 +3,13 @@ const foodEl = document.querySelector('#btn-feed');
 const advenEl = document.querySelector('#btn-adventure');
 const sleptEl = document.querySelector('#btn-night');
 const btnsEl = document.querySelector('#maintenance')
+const btnsEvl = document.querySelector('#evolutions')
+const btnsAcs = document.querySelector('#accessories')
+const room = document.querySelector('.rectangle-left')
 
+const upgrades = document.getElementById('upgradeText');
+const evolEl = document.getElementById('evolutions');
+const accssEl = document.getElementById('accessories');
 const startEl = document.getElementById('btn-start');
 const feedEl = document.getElementById('btn-feed');
 const advEl = document.getElementById('btn-adventure');
@@ -21,6 +27,11 @@ let count = null;
 let recklessCount = null;
 let overFeedCount = null;
 let overSleepCount = null;
+let intervalUpPts = null;
+let upPts = null;
+let evolutionStage = null;
+let accessorieStage = null;
+
 
 
 //////////////////////////////////////////////////////////////////////
@@ -67,14 +78,18 @@ function handleStartClick(){
         advenEl.style.visibility = ('visible');
         foodEl.style.visibility = ('visible');
         sleptEl.style.visibility = ('visible');
-        rulesLine.textContent = 'This is where the rules appear'
-        rulesLine.style.visibility = ('hidden');
+        rulesLine.textContent = 'This is where the rules appear';
+        rulesLine.style.visibility = ('visible');
+        clearInterval(evolutionStage);
+        clearInterval(accessorieStage);
+        clearInterval(intervalUpPts);
         clearInterval(interval);
+        clearInterval(count);
         clearInterval(recklessCount);
         clearInterval(overFeedCount);
         clearInterval(overSleepCount);
     } 
-
+    upgrades.textContent = `Upgrade Pts:`
     countEl.textContent = 'Lifespan';
     myPet.name = answer
     namePlate.textContent = `Battery ID: ${myPet.name}`
@@ -84,6 +99,9 @@ function handleStartClick(){
             myPet.sustenance = 100;
             myPet.fun = 100;
             count = null;
+            upPts = null;
+            interval = null;
+            upgrades.textContent = `Upgrade Pts: `
             funEl.textContent = `Entertainment Levels: ${myPet.fun}`;
             sustenanceEl.textContent = `Sustenance Levels: ${myPet.sustenance}`;
             restEl.textContent = `Rest Levels: ${myPet.rest}`;
@@ -93,19 +111,18 @@ function handleStartClick(){
         count++
         if (count % 6 === 0) {
             myPet.fun = myPet.fun - 20
-            console.log(`fun - ${myPet.fun}`)
+            // console.log(`fun - ${myPet.fun}`)
             funEl.textContent = `Entertainment Levels: ${myPet.fun}`;
         }
         if (count % 2 === 0) {
             myPet.sustenance = myPet.sustenance - 15
-            console.log(`sustenance - ${myPet.sustenance}`)
+            // console.log(`sustenance - ${myPet.sustenance}`)
             sustenanceEl.textContent = `Sustenance Levels: ${myPet.sustenance}`;
         }
         if (count % 4 === 0) {
             myPet.rest = myPet.rest - 30
-            console.log(`Rest - ${myPet.rest}`)
+            // console.log(`Rest - ${myPet.rest}`)
             restEl.textContent = `Rest Levels: ${myPet.rest}`;
-
         }
         if (myPet.sustenance <=0){
             rulesLine.textContent = `You starved ${myPet.name} to death. (GAME OVER)`
@@ -119,20 +136,42 @@ function handleStartClick(){
         }
         console.log("Day: " + count)
         countEl.textContent = "Day # " + count;
-    }, 2400);
+    }
+    , 2400);
 
+    intervalUpPts = setInterval(function (){
+        upPts++
+        if (upPts <= 0 ) {
+            btnsEvl.style.visibility = ('hidden');
+            btnsAcs.style.visibility = ('hidden');
+        } 
+        if (upPts >= 60) {
+            btnsEvl.style.visibility = ('visible');
+        }
+        if (upPts >= 30 ) {
+            btnsAcs.style.visibility = ('visible');
+        }
+        upgrades.textContent = `Upgrade Pts: ${upPts}`
+    }
+    , 200)
 }  
+
+
 
 function gameOver(){
     advenEl.style.visibility = ('hidden');
     foodEl.style.visibility = ('hidden');
     sleptEl.style.visibility = ('hidden');
-    btnsEl.style.visibility = ('hidden');
+    btnsEvl.style.visibility = ('hidden');
+    btnsAcs.style.visibility = ('hidden');
     rulesLine.style.visibility = ('visible');
-    clearInterval(interval)
-    clearInterval(recklessCount)
-    clearInterval(overFeedCount)
-    clearInterval(overSleepCount)
+    clearInterval(intervalUpPts);
+    clearInterval(evolutionStage);
+    clearInterval(accessorieStage);
+    clearInterval(interval);
+    clearInterval(recklessCount);
+    clearInterval(overFeedCount);
+    clearInterval(overSleepCount);
 }
 
 function handleAdvClick(){
@@ -149,13 +188,16 @@ function handleAdvClick(){
         }
     } else {
 
-        myPet.fun = myPet.fun + 15;
+        myPet.fun = myPet.fun + 20;
+        myPet.sustenance = myPet.sustenance - 5;
+        myPet.rest = myPet.rest - 7;
         rulesLine.textContent = `Rick and ${myPet.name} went adventuring!`   
         rulesLine.style.visibility = 'visible'
     }
 
     funEl.textContent = `Entertainment Levels: ${myPet.fun}`;
-    // console.log(myPet.fun)
+    sustenanceEl.textContent = `Sustenance Levels: ${myPet.sustenance}`;
+    restEl.textContent = `Rest Levels: ${myPet.rest}`;    // console.log(myPet.fun)
     
 }
 
@@ -176,11 +218,16 @@ function handleFeedClick() {
         }
     } else {
         myPet.sustenance = myPet.sustenance + 5;
+        myPet.rest = myPet.rest - 5;
+        myPet.fun = myPet.fun - 2;
         rulesLine.textContent = `${myPet.name} be grubbin`
         rulesLine.style.visibility = 'visible'
 
     }
+    funEl.textContent = `Entertainment Levels: ${myPet.fun}`;
     sustenanceEl.textContent = `Sustenance Levels: ${myPet.sustenance}`;
+    restEl.textContent = `Rest Levels: ${myPet.rest}`;
+
     rulesLine.style.visibility = 'visible'
 
     // console.log(myPet.sustenance)
@@ -199,14 +246,57 @@ function handleSleepClick(){
         } 
     } else {
         myPet.rest = 100;
+        myPet.fun = myPet.fun - 5;
+        myPet.sustenance = myPet.sustenance - 2;
         rulesLine.textContent = `${myPet.name} is sleeping like a baby`
         rulesLine.style.visibility = 'visible'
     }
+    funEl.textContent = `Entertainment Levels: ${myPet.fun}`;
+    sustenanceEl.textContent = `Sustenance Levels: ${myPet.sustenance}`;
     restEl.textContent = `Rest Levels: ${myPet.rest}`;
     rulesLine.style.visibility = 'visible'
     // console.log(myPet.rest)
 }
 
+function handleEvolveClick(event){
+    console.log(event.target)
+    if (upPts >= 60){
+        upPts = upPts - 60;
+        rulesLine.textContent = `${myPet.name} has changed...`
+        rulesLine.style.visibility = 'visible'
+        if (evolutionStage == 0){
+            evolutionStage++
+            room.style.backgroundImage = 'url(Images/big-morty.png), url(images/Mortys_room_awake.jpeg)'
+            room.style.backgroundPosition = '-8px 60px, 0px'
+        } else {
+            room.style.backgroundImage = 'url(Images/big-morty.png), url(images/Mortys_room_awake.jpeg)'
+        }
+    }
+}
+
+function handleAccessorizeClick(event){
+    console.log(accessorieStage)
+    if (upPts >= 30){
+        upPts = upPts - 30;
+        rulesLine.textContent = `You decied to give ${myPet.name} a present`
+        rulesLine.style.visibility = 'visible'
+        if (accessorieStage == null){
+            accessorieStage++
+            room.style.backgroundImage = 'url(Images/morty-derp-face.png), url(Images/accessory_1.jpg), url(Images/Mortys_room_awake.jpeg)'
+            room.style.backgroundPosition = '-8px 60px, 600px 320px, 0px'
+            room.style.backgroundSize = '300px, 50px, cover'
+        } else if (accessorieStage == 1){
+            accessorieStage++
+            room.style.backgroundImage = 'url(Images/morty-derp-face.png), url(Images/accessory_1.jpg), url(Images/accessory_2.png), url(Images/Mortys_room_awake.jpeg)'
+            room.style.backgroundPosition = '-8px 60px, 600px 320px, 480px 220px , 0px'
+            room.style.backgroundSize = '300px, 50px, 100px , cover'
+        } else if (accessorieStage == 2){
+            room.style.backgroundImage = 'url(Images/morty-derp-face.png), url(Images/accessory_1.jpg), url(Images/accessory_2.png), url(Images/accessory_3.jpeg), url(Images/Mortys_room_awake.jpeg)'
+            room.style.backgroundPosition = '-8px 60px, 600px 320px, 480px 220px, 200px 50px, 0px'
+            room.style.backgroundSize = '300px, 50px, 100px, 300px, cover'
+        }
+    }
+}
 ////////////////////////////////////////////////////////////////////////?
  
 //EVENT LISTENERS//
@@ -226,6 +316,9 @@ advEl.addEventListener('click', handleAdvClick);
 // event listener for fatigue button
 sleepEl.addEventListener('click', handleSleepClick);
 
+evolEl.addEventListener('click', handleEvolveClick);
+
+accssEl.addEventListener('click', handleAccessorizeClick);
 
 ////////////////////////////////////////////////////////////////////////
 

@@ -18,13 +18,17 @@ body {
     border: 3px solid #3F3F3F;
 }
 
+#btn-start:hover {
+    cursor: pointer;
+}
+
 .rectangle-wrapper { 
     width: 800px;
     height: 400px;
     top: 39%;
     left: 49.5%;
     position: absolute;
-    /* box-shadow: 10px 10px 54px -6px rgba(0,0,0,0.75); */
+    box-shadow: 10px 10px 54px -6px rgba(0,0,0,0.75);
     transform: translate(-50%, -50%);
 }
 .rectangle,.rectangle div {
@@ -34,7 +38,9 @@ body {
     left: 0;
     position: absolute;
     transform-style: preserve-3d;
-    transition: transform 0.5s ease-in-out;
+    transition-delay: .5s;
+    transition-duration: .5s;
+    transition-timing-function: ease-in-out;
 }
 .rectangle-left {
     width: 800px;
@@ -61,6 +67,66 @@ body {
     transform: rotateY(-90deg)
 
 }
+
+/* .container {
+    width: 200px;
+    height: 200px;
+    perspective: 1000px;
+    margin: 100px auto 0;
+  }
+
+  .cube {
+    transform-style: preserve-3d;
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: repeating-linear-gradient(0deg, rgba(70,70,70, 0.2) 0px, rgba(70,70,70, 0.2) 1px,transparent 1px, transparent 21px),repeating-linear-gradient(90deg, rgba(70,70,70, 0.2) 0px, rgba(70,70,70, 0.2) 1px,transparent 1px, transparent 21px),linear-gradient(90deg, rgb(255,255,255),rgb(255,255,255));
+  }
+
+.top {
+    transform: rotateX(90deg) translateZ(100px);
+  }
+  .bottom {
+    transform: rotateX(-90deg) translateZ(100px);
+  }
+  
+  .right {
+    transform: rotateY(90deg) translateZ(100px);
+  }
+  .left {
+    transform: rotateY(-90deg) translateZ(100px);
+  }
+  
+  .front {
+    transform: rotateX(0deg) translateZ(100px);
+  }
+  .back {
+    transform: rotateX(-180deg) translateZ(100px);
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotateX(0deg) rotateY(0deg);
+    }
+    to {
+      transform: rotateX(360deg) rotateY(360deg);
+    }
+  } */
+  .cube {
+    transform-style: preserve-3d;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    animation: spin 5s infinite linear;
+  }
+
+
 
 #hub{
     display: flex;
@@ -94,17 +160,17 @@ body {
     text-align: center;
     visibility: hidden;
     font-size: larger;
-    }
+}
 
 #maintenance{
-width: 100%;
-display: flex;
-flex-direction: row;
-justify-content: space-around;
-max-height: 52px;
-flex-grow: 4;
-margin-top: 20px;
-visibility: hidden;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    max-height: 52px;
+    flex-grow: 4;
+    margin-top: 20px;
+    visibility: hidden;
 }
 
 #stats {
@@ -127,7 +193,7 @@ visibility: hidden;
     width: 50px;
     height: 50px;
     border: 1px solid black;
-
+    
 }
 
 
@@ -136,7 +202,11 @@ visibility: hidden;
     background-size: cover;
     text-align: center;
     visibility: hidden;
+    
+}
 
+#btn-feed:hover {
+    cursor: pointer;
 }
 
 #btn-adventure{
@@ -146,9 +216,85 @@ visibility: hidden;
     visibility: hidden;
 }
 
+#btn-adventure:hover {
+    cursor: pointer;
+}
+
 #btn-night{
     background-image: url(images/sleep_button.gif);
     background-size: cover;
     text-align: center;
     visibility: hidden;
+}
+
+#btn-night:hover {
+    cursor: pointer;
+}
+
+#upgrades {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    background-image: url(images/hub_background.jpg);
+    background-size: cover;
+    background-position: -1.5px -50.5px;
+    position: absolute;
+    top: 68.5%;
+    left: 7%;
+    border: 7px solid #3F3F3F;
+    align-items: center;
+    width: 10%;
+    min-height: 210px;
+}
+
+#upgradeText {
+    color: greenyellow;
+    background-color: black;
+    width: fit-content;
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: x-large;
+}
+
+#evolutions {
+    background-image: url(images/pixel-portal.png);
+    background-size: cover;
+    text-align: center;
+    visibility: hidden;
+}
+
+#evolutions:hover {
+    cursor: pointer;
+}
+
+.evolText {
+    color: greenyellow;
+    background-color: black;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: large;
+    margin: 5px;
+}
+
+#accessories {
+    background-image: url(images/plumbus.png);
+    background-size: cover;
+    text-align: center;
+    visibility: hidden;
+}
+
+#accessories:hover {
+    cursor: pointer;
+}
+
+.accssText {
+    color: greenyellow;
+    background-color: black;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: large;
+    margin: 5px;
 }
