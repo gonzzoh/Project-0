@@ -54,6 +54,7 @@ body {
     border: 10px solid black;
     transform: rotateY(0deg);
 }
+
 .rectangle-top {
     width: 400px;
     height: 400px;

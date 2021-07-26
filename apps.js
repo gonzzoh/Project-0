@@ -29,8 +29,8 @@ let overFeedCount = null;
 let overSleepCount = null;
 let intervalUpPts = null;
 let upPts = null;
-let evolutionStage = null;
-let accessorieStage = null;
+let evolutionStage = 0;
+let accessorieStage = 0;
 
 
 
@@ -153,7 +153,7 @@ function handleStartClick(){
         }
         upgrades.textContent = `Upgrade Pts: ${upPts}`
     }
-    , 200)
+    , 100)
 }  
 
 
@@ -264,34 +264,89 @@ function handleEvolveClick(event){
         upPts = upPts - 60;
         rulesLine.textContent = `${myPet.name} has changed...`
         rulesLine.style.visibility = 'visible'
-        if (evolutionStage == 0){
+        if (evolutionStage == 0 && accessorieStage == 0){
             evolutionStage++
             room.style.backgroundImage = 'url(Images/big-morty.png), url(images/Mortys_room_awake.jpeg)'
             room.style.backgroundPosition = '-8px 60px, 0px'
-        } else {
-            room.style.backgroundImage = 'url(Images/big-morty.png), url(images/Mortys_room_awake.jpeg)'
+        }else if(evolutionStage == 0 && accessorieStage == 1){
+            evolutionStage++
+            room.style.backgroundImage = 'url(Images/big-morty.png), url(Images/accessory_1.jpg), url(Images/Mortys_room_awake.jpeg)'
+            room.style.backgroundPosition = '-8px 60px, 600px 320px, 0px'
+            room.style.backgroundSize = '300px, 50px, cover'
+        }else if(evolutionStage == 0 && accessorieStage == 2){
+            evolutionStage++
+            room.style.backgroundImage = 'url(Images/big-morty.png), url(Images/accessory_1.jpg), url(Images/accessory_2.png), url(Images/Mortys_room_awake.jpeg)'
+            room.style.backgroundPosition = '-8px 60px, 600px 320px, 480px 220px, 0px'
+            room.style.backgroundSize = '300px, 50px, 100px, cover'
+        }else if(evolutionStage == 0 && accessorieStage == 3){
+            evolutionStage++
+            room.style.backgroundImage = 'url(Images/big-morty.png), url(Images/accessory_1.jpg), url(Images/accessory_2.png), url(Images/accessory_3.jpeg), url(Images/Mortys_room_awake.jpeg)'
+            room.style.backgroundPosition = '-8px 60px, 600px 320px, 480px 220px, 200px 50px, 0px'
+            room.style.backgroundSize = '300px, 50px, 100px, 300px, cover'
+        }else if (evolutionStage == 1 && accessorieStage == 0){
+            evolutionStage++
+            room.style.backgroundImage = 'url(Images/evil-morty.jpeg), url(images/Mortys_room_awake.jpeg)'
+            room.style.backgroundPosition = '-8px 60px, 0px'
+        }else if(evolutionStage == 1 && accessorieStage == 1){
+            evolutionStage++
+            room.style.backgroundImage = 'url(Images/evil-morty.jpeg), url(Images/accessory_1.jpg), url(Images/Mortys_room_awake.jpeg)'
+            room.style.backgroundPosition = '-8px 60px, 600px 320px, 0px'
+            room.style.backgroundSize = '300px, 50px, cover'
+        }else if(evolutionStage == 1 && accessorieStage == 2){
+            evolutionStage++
+            room.style.backgroundImage = 'url(Images/evil-morty.jpeg), url(Images/accessory_1.jpg), url(Images/accessory_2.png), url(Images/accessory_3.jpeg), url(Images/Mortys_room_awake.jpeg)'
+            room.style.backgroundPosition = '-8px 60px, 600px 320px, 480px 220px, 200px 50px, 0px'
+            room.style.backgroundSize = '300px, 50px, 100px, 300px, cover'
         }
     }
 }
 
 function handleAccessorizeClick(event){
-    console.log(accessorieStage)
+    console.log(event.target)
     if (upPts >= 30){
         upPts = upPts - 30;
         rulesLine.textContent = `You decied to give ${myPet.name} a present`
         rulesLine.style.visibility = 'visible'
-        if (accessorieStage == null){
+        if (accessorieStage == 0 && evolutionStage == 0){
             accessorieStage++
             room.style.backgroundImage = 'url(Images/morty-derp-face.png), url(Images/accessory_1.jpg), url(Images/Mortys_room_awake.jpeg)'
             room.style.backgroundPosition = '-8px 60px, 600px 320px, 0px'
             room.style.backgroundSize = '300px, 50px, cover'
-        } else if (accessorieStage == 1){
+        } else if(accessorieStage == 0 && evolutionStage == 1){
+            accessorieStage++
+            room.style.backgroundImage = 'url(Images/big-morty.png), url(Images/accessory_1.jpg), url(Images/Mortys_room_awake.jpeg)'
+            room.style.backgroundPosition = '-8px 60px, 600px 320px, 0px'
+            room.style.backgroundSize = '300px, 50px, cover'
+        }else if(accessorieStage == 0 && evolutionStage == 2){
+            accessorieStage++
+            room.style.backgroundImage = 'url(Images/evil-morty.jpeg), url(Images/accessory_1.jpg), url(Images/Mortys_room_awake.jpeg)'
+            room.style.backgroundPosition = '-8px 60px, 600px 320px, 0px'
+            room.style.backgroundSize = '300px, 50px, cover'
+        }else if (accessorieStage == 1 && evolutionStage == 0){
             accessorieStage++
             room.style.backgroundImage = 'url(Images/morty-derp-face.png), url(Images/accessory_1.jpg), url(Images/accessory_2.png), url(Images/Mortys_room_awake.jpeg)'
             room.style.backgroundPosition = '-8px 60px, 600px 320px, 480px 220px , 0px'
             room.style.backgroundSize = '300px, 50px, 100px , cover'
-        } else if (accessorieStage == 2){
+        }else if(accessorieStage == 1 && evolutionStage == 1){
+            accessorieStage++
+            room.style.backgroundImage = 'url(Images/big-morty.png), url(Images/accessory_1.jpg), url(Images/accessory_2.png), url(Images/Mortys_room_awake.jpeg)'
+            room.style.backgroundPosition = '-8px 60px, 600px 320px, 480px 220px , 0px'
+            room.style.backgroundSize = '300px, 50px, 100px , cover'
+        }else if(accessorieStage == 1 && evolutionStage == 2){
+            accessorieStage++
+            room.style.backgroundImage = 'url(Images/evil-morty.jpeg), url(Images/accessory_1.jpg), url(Images/accessory_2.png), url(Images/Mortys_room_awake.jpeg)'
+            room.style.backgroundPosition = '-8px 60px, 600px 320px, 480px 220px , 0px'
+            room.style.backgroundSize = '300px, 50px, 100px , cover'  
+        }else if (accessorieStage == 2 && evolutionStage == 0){
             room.style.backgroundImage = 'url(Images/morty-derp-face.png), url(Images/accessory_1.jpg), url(Images/accessory_2.png), url(Images/accessory_3.jpeg), url(Images/Mortys_room_awake.jpeg)'
+            room.style.backgroundPosition = '-8px 60px, 600px 320px, 480px 220px, 200px 50px, 0px'
+            room.style.backgroundSize = '300px, 50px, 100px, 300px, cover'
+        }else if(accessorieStage == 2 && evolutionStage == 1){
+            room.style.backgroundImage = 'url(Images/big-morty.png), url(Images/accessory_1.jpg), url(Images/accessory_2.png), url(Images/accessory_3.jpeg), url(Images/Mortys_room_awake.jpeg)'
+            room.style.backgroundPosition = '-8px 60px, 600px 320px, 480px 220px, 200px 50px, 0px'
+            room.style.backgroundSize = '300px, 50px, 100px, 300px, cover'
+        }else if(accessorieStage == 2 && evolutionStage == 2){
+            room.style.backgroundImage = 'url(Images/evil-morty.jpeg), url(Images/accessory_1.jpg), url(Images/accessory_2.png), url(Images/accessory_3.jpeg), url(Images/Mortys_room_awake.jpeg)'
             room.style.backgroundPosition = '-8px 60px, 600px 320px, 480px 220px, 200px 50px, 0px'
             room.style.backgroundSize = '300px, 50px, 100px, 300px, cover'
         }
