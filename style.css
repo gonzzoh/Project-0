@@ -282,6 +282,7 @@ body {
 #accessories {
     background-image: url(images/plumbus.png);
     background-size: cover;
+    left:30px;
     text-align: center;
     visibility: hidden;
 }

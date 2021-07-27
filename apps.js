@@ -38,19 +38,6 @@ let accessorieStage = 0;
 
 //VARIABLES//
 
-// variable for start timer
-// let timer = 0;
-
-// variable for hunger
-// let sustenance = 10;
-
-// variable for adventures
-// let fun = 10;
-
-// variable for fatigue
-// let rest = 10;
-
-
 // variable for depletion
 
 //////////////////////////////////////////////////////////////////////
@@ -66,7 +53,27 @@ class Pet {
 }
 
 const myPet = new Pet();
+console.log(myPet)
 
+let famineQuote = [`You starved ${myPet.name} to death (GAME OVER)`, `${myPet.name} died of famine (GAME OVER)`, `${myPet.name} starved to death you absolute Morty! (GAME OVER)`];
+let boredomQuote = [`You bored ${myPet.name} to death (GAME OVER)`, `${myPet.name} was neglected to death (GAME OVER)`];
+let insomniaQuote = [`You worked ${myPet.name} to death (GAME OVER)`, `${myPet.name} did not survive the Russian sleep experiment (GAME OVER)`];
+let feedQuote = [`You fed ${myPet.name} some eyeholes`, `${myPet.name} be grubbin those eyeholes`];
+let funQuote = [`You took ${myPet.name} adventuring`, `You watched some trandimensional TV with ${myPet}`, `${myPet.name} went for a walk`];
+let sleepQuote = [`${myPet.name} went to sleep`, `A little chloroform won't hurt ${myPet.name}`, `You put ${myPet.name} to sleep`];
+let overFedQuote = [`You forcefed ${myPet.name} until he exploded (GAME OVER)`, `The eyeholes man finally found ${myPet.name} (GAME OVER)`, `I told you not to overdo it with the eyeholes (GAME OVER)`]
+let overSleepQuote = [`Scary Terry tore out ${myPet.name}'s entrails`, `${myPet.name}'s demons caught up to him in his sleep`]
+let overAdventureQuote = [`${myPet.name} failed their first solo mission (GAME OVER)`, `${myPet.name} got absducted by the council of Ricks (GAME OVER)`, `You gave ${myPet.name} too much freedom and they ran away (GAME OVER)`]
+
+let randomFamOver = famineQuote[Math.floor(Math.random() * famineQuote.length)];
+let randomBorOver = boredomQuote[Math.floor(Math.random() * boredomQuote.length)];
+let randomInsOver = insomniaQuote[Math.floor(Math.random() * insomniaQuote.length)];
+let randomFamQuote = feedQuote[Math.floor(Math.random() * feedQuote.length)];
+let randomFunQuote = funQuote[Math.floor(Math.random() * funQuote.length)];
+let randomSleepQuote = sleepQuote[Math.floor(Math.random() * sleepQuote.length)];
+let gluttonQuote = overFedQuote[Math.floor(Math.random() * overFedQuote.length)];
+let dreamQuote = overSleepQuote[Math.floor(Math.random() * overSleepQuote.length)];
+let recklessQuote = overAdventureQuote[Math.floor(Math.random() * overAdventureQuote.length)];
 ////////////////////////////////////////////////////////////////////////
 
 //FUNCTIONS//
@@ -78,6 +85,11 @@ function handleStartClick(){
         advenEl.style.visibility = ('visible');
         foodEl.style.visibility = ('visible');
         sleptEl.style.visibility = ('visible');
+        evolEl.style.visibility = ('hidden');
+        accssEl.style.visibility = ('hidden');
+        room.style.backgroundImage = 'url(Images/morty-derp-face.png), url(images/Mortys_room_awake.jpeg)'
+        room.style.backgroundPosition = '-8px 60px, 0px'
+        room.style.backgroundSize = '300px, cover'
         rulesLine.textContent = 'This is where the rules appear';
         rulesLine.style.visibility = ('visible');
         clearInterval(evolutionStage);
@@ -98,6 +110,8 @@ function handleStartClick(){
             myPet.rest = 100;
             myPet.sustenance = 100;
             myPet.fun = 100;
+            evolutionStage = 0;
+            accessorieStage = 0;
             count = null;
             upPts = null;
             interval = null;
@@ -125,13 +139,13 @@ function handleStartClick(){
             restEl.textContent = `Rest Levels: ${myPet.rest}`;
         }
         if (myPet.sustenance <=0){
-            rulesLine.textContent = `You starved ${myPet.name} to death. (GAME OVER)`
+            rulesLine.textContent = randomFamOver;
             gameOver()
         } else if (myPet.fun <=0){
-            rulesLine.textContent = `You bored ${myPet.name} to death. (GAME OVER)`
+            rulesLine.textContent = randomBorOver;
             gameOver()
         } else if (myPet.rest <=0){
-            rulesLine.textContent = `You worked ${myPet.name} to death. (GAME OVER)`
+            rulesLine.textContent = randomInsOver;
             gameOver()
         }
         console.log("Day: " + count)
@@ -156,8 +170,6 @@ function handleStartClick(){
     , 100)
 }  
 
-
-
 function gameOver(){
     advenEl.style.visibility = ('hidden');
     foodEl.style.visibility = ('hidden');
@@ -178,7 +190,7 @@ function handleAdvClick(){
     if (myPet.fun >= 100){
         recklessCount++
         if (recklessCount > 3){
-            rulesLine.textContent = `${myPet.name} got too reckless!! (GAME OVER)`;
+            rulesLine.textContent = recklessQuote;
             rulesLine.style.visibility = 'visible'
             return gameOver();
         } else {
@@ -191,7 +203,7 @@ function handleAdvClick(){
         myPet.fun = myPet.fun + 20;
         myPet.sustenance = myPet.sustenance - 5;
         myPet.rest = myPet.rest - 7;
-        rulesLine.textContent = `Rick and ${myPet.name} went adventuring!`   
+        rulesLine.textContent = randomFunQuote;   
         rulesLine.style.visibility = 'visible'
     }
 
@@ -205,7 +217,7 @@ function handleFeedClick() {
     if (myPet.sustenance >= 100){
         overFeedCount++
         if (overFeedCount > 3){
-            rulesLine.textContent = `${myPet.name} exploded!! (GAME OVER)`;
+            rulesLine.textContent = gluttonQuote;
             rulesLine.style.visibility = 'visible'
 
             // if the game ends:
@@ -213,14 +225,14 @@ function handleFeedClick() {
             return  gameOver();
             // disable buttons
         } else {
-            rulesLine.textContent = `If you feed ${myPet.name} too much he will explode!`
+            rulesLine.textContent = `${myPet.name} is eating too much! Be careful`
             rulesLine.style.visibility = 'visible'
         }
     } else {
         myPet.sustenance = myPet.sustenance + 5;
         myPet.rest = myPet.rest - 5;
         myPet.fun = myPet.fun - 2;
-        rulesLine.textContent = `${myPet.name} be grubbin`
+        rulesLine.textContent = randomFamQuote;
         rulesLine.style.visibility = 'visible'
 
     }
@@ -237,7 +249,7 @@ function handleSleepClick(){
     if (myPet.rest >= 100){
             overSleepCount++
             if (overSleepCount > 1) {
-            rulesLine.textContent = `Scary Terry quenched his bloodlust with ${myPet.name}'s life!! (GAME OVER)`
+            rulesLine.textContent = dreamQuote;
             rulesLine.style.visibility = 'visible'
             return gameOver();
         } else {
@@ -248,7 +260,7 @@ function handleSleepClick(){
         myPet.rest = 100;
         myPet.fun = myPet.fun - 5;
         myPet.sustenance = myPet.sustenance - 2;
-        rulesLine.textContent = `${myPet.name} is sleeping like a baby`
+        rulesLine.textContent = randomSleepQuote;
         rulesLine.style.visibility = 'visible'
     }
     funEl.textContent = `Entertainment Levels: ${myPet.fun}`;
@@ -294,13 +306,23 @@ function handleEvolveClick(event){
             room.style.backgroundSize = '300px, 50px, cover'
         }else if(evolutionStage == 1 && accessorieStage == 2){
             evolutionStage++
+            room.style.backgroundImage = 'url(Images/evil-morty.jpeg), url(Images/accessory_1.jpg), url(Images/accessory_2.png), url(Images/Mortys_room_awake.jpeg)'
+            room.style.backgroundPosition = '-8px 60px, 600px 320px, 480px 220px, 0px'
+            room.style.backgroundSize = '300px, 50px, 100px, cover'
+        }else if(evolutionStage == 1 && accessorieStage == 3){
+            evolutionStage++
             room.style.backgroundImage = 'url(Images/evil-morty.jpeg), url(Images/accessory_1.jpg), url(Images/accessory_2.png), url(Images/accessory_3.jpeg), url(Images/Mortys_room_awake.jpeg)'
             room.style.backgroundPosition = '-8px 60px, 600px 320px, 480px 220px, 200px 50px, 0px'
             room.style.backgroundSize = '300px, 50px, 100px, 300px, cover'
         }
     }
+    if (upPts <= 59){
+        btnsEvl.style.visibility = 'hidden';
+    } 
+    if (upPts < 30){
+        btnsAcs.style.visibility = 'hidden'
+    }
 }
-
 function handleAccessorizeClick(event){
     console.log(event.target)
     if (upPts >= 30){
@@ -351,9 +373,15 @@ function handleAccessorizeClick(event){
             room.style.backgroundSize = '300px, 50px, 100px, 300px, cover'
         }
     }
+    if (upPts <= 29){
+        btnsAcs.style.visibility = 'hidden';
+    }
+    if (upPts < 60){
+        btnsEvl.style.visibility = 'hidden';
+    }
 }
 ////////////////////////////////////////////////////////////////////////?
- 
+
 //EVENT LISTENERS//
 
 // event listener for start button
