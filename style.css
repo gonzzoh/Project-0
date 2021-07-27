@@ -13,6 +13,7 @@ body {
 }
 
 #btn-start{
+    margin-top: 5px;
     background-color:black;
     color: greenyellow;
     border: 3px solid #3F3F3F;
@@ -68,8 +69,8 @@ body {
     transform: rotateY(-90deg)
 
 }
-
-/* .container {
+/* 
+.container {
     width: 200px;
     height: 200px;
     perspective: 1000px;
@@ -119,14 +120,6 @@ body {
       transform: rotateX(360deg) rotateY(360deg);
     }
   } */
-  .cube {
-    transform-style: preserve-3d;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    animation: spin 5s infinite linear;
-  }
-
 
 
 #hub{
@@ -240,12 +233,12 @@ body {
     background-size: cover;
     background-position: -1.5px -50.5px;
     position: absolute;
-    top: 68.5%;
-    left: 7%;
+    top: 67%;
+    left: 3%;
     border: 7px solid #3F3F3F;
     align-items: center;
-    width: 10%;
-    min-height: 210px;
+    width: 15%;
+    min-height: 263px;
 }
 
 #upgradeText {
@@ -260,7 +253,8 @@ body {
 
 #evolutions {
     background-image: url(images/pixel-portal.png);
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
     text-align: center;
     visibility: hidden;
 }
@@ -282,6 +276,7 @@ body {
 #accessories {
     background-image: url(images/plumbus.png);
     background-size: cover;
+    left:30px;
     text-align: center;
     visibility: hidden;
 }
