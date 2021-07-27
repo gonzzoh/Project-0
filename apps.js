@@ -425,6 +425,12 @@ function handleAccessorizeClick(event) {
             room.style.backgroundSize = '300px, 50px, 100px, 300px, cover'
         }
     }
+    if (upPts <= 29){
+        btnsAcs.style.visibility = 'hidden';
+    }
+    if (upPts < 60){
+        btnsEvl.style.visibility = 'hidden';
+    }
 }
 if (upPts < 30) {
     btnsAcs.style.visibility = 'hidden';
