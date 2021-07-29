@@ -1,6 +1,14 @@
 h1 {
-    background-color: rgb(175, 238, 238);
-    color: black;
+    margin: 0 auto;
+    color: greenyellow;
+    background-color: black;
+    background-size: fill;
+    background-position: -23.5px -43.7px;
+    border: 7px solid #3F3F3F;
+    align-items: center;
+    font-family: monospace;
+    font-weight: 200;
+    padding-bottom: 6px;
 }
 
 body {
@@ -17,6 +25,8 @@ body {
     background-color:black;
     color: greenyellow;
     border: 3px solid #3F3F3F;
+    font-family: monospace;
+    padding-bottom: 3px;
 }
 
 #btn-start:hover {
@@ -26,7 +36,7 @@ body {
 .rectangle-wrapper { 
     width: 800px;
     height: 400px;
-    top: 39%;
+    top: 34%;
     left: 49.5%;
     position: absolute;
     box-shadow: 10px 10px 54px -6px rgba(0,0,0,0.75);
@@ -66,7 +76,7 @@ body {
     transform-origin: left;
 }
 .rectangle-wrapper:hover .rectangle {
-    transform: rotateY(-90deg)
+    /* transform: rotateY(-90deg) */
 
 }
 /* 
@@ -130,11 +140,12 @@ body {
     background-size: cover;
     background-position: -1px -27.5px;
     position: absolute;
-    top: 68.5%;
+    top: 66.5%;
     border: 7px solid #3F3F3F;
     align-items: center;
     width: 60%;
     min-height: 200px;
+    font-family: monospace;
 }
 
 
@@ -231,14 +242,15 @@ body {
     margin: 0 auto;
     background-image: url(images/hub_background.jpg);
     background-size: cover;
-    background-position: -1.5px -50.5px;
+    background-position: -23.5px -43.7px;
     position: absolute;
-    top: 67%;
+    top: 63.5%;
     left: 3%;
     border: 7px solid #3F3F3F;
     align-items: center;
     width: 15%;
     min-height: 263px;
+    font-family: monospace;
 }
 
 #upgradeText {
